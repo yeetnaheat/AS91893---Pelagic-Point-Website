@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pelagic Point</title>
     <link rel="stylesheet" href="PPHP.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     
     <nav>
@@ -22,7 +24,6 @@
                 <div id="searchResults"></div>
             </div>
 
-            <div></div>
 
         </div>
 
@@ -37,11 +38,47 @@
         </div>
 
     </nav>
+    
+    <div class="greyDivider"></div>
 
     <div class="mainImg">
         <img src="images/PP_Home.jpeg" alt="WetsuitPromo">
     </div>
 
+    <div class="greyDivider"></div>
+
+        
+    <table class="HPContent">
+        <tr>
+            <td><img src="images/SpeargunsHP.jpeg" alt="SpeargunPromo"></td>
+            <td><h1 class="HPSpearguns">Spearguns are super important for underwater hunting, after all, how could you catch fish without one? This is what Pelagic Point has set out to provide, the best of the best spearguns for those of any background.</h1></td>
+        </tr>
+    </table>
+        
+
+    <div class="greyDivider"></div>
+
+    <table class="HPContent">
+        <tr>
+            <td><h1 class="HPCharters">Charters are a great way to explore the underwater world with experienced guides. At Pelagic Point, we offer the best charter experiences for both beginners and seasoned divers.</h1></td>
+            <td><img src="images/ChartersHP.jpeg" alt="ChartersPromo"></td>
+        </tr>
+    </table>
+
+    <div class="greyDivider"></div>
+
+    <footer>
+
+        <p></p>
+
+        <div class="social-icons">
+            <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"> Instagram</i></a>
+            <a href="https://www.facebook.com" target="_blank" class="social-icon"><i class="fa-brands fa-facebook"> Facebook</i></a>
+            <a href="https://www.twitter.com" target="_blank" class="social-icon"><i class="fa-brands fa-twitter"> Twitter</i></a>
+        </div>
+
+        <p class="footer-text">&copy; 2026 Pelagic Point. All rights reserved.</p>
+    </footer>
 </body>
 </html>
 
@@ -113,6 +150,12 @@ document.addEventListener("click", function(e){
         results.style.display = "none";
     }
 
+});
+
+const logo = document.querySelector(".logo");
+
+logo.addEventListener("click", function() {
+    window.location.href = "Index.html";
 });
 
 </script>

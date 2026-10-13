@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="PPHP.css">
+</head>
+<body>
+    
+    <nav>
+
+        <div class="top-nav">
+
+            <div class="logo">
+                <img src="images/Logo.png" alt="Logo" height="14%" width="21%">
+            </div>
+
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Search products...">
+
+                <div id="searchResults"></div>
+            </div>
+
+            <div></div>
+
+        </div>
+
+        <div class="bottom-nav">
+
+            <a href="Index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="shop.html">Shop</a>
+            <a href="charters.html">Charters</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+    </nav>
+</body>
+</html>
+
+<script>
+
+const products = [
+
+    // Products
+    { name: "Speargun", url: "shop.html#spearguns" },
+    { name: "Spearguns", url: "shop.html#spearguns" },
+
+    { name: "Wetsuit", url: "shop.html#wetsuit" },
+    { name: "Wetsuits", url: "shop.html#wetsuit" },
+
+    { name: "Mask", url: "shop.html#masks" },
+    { name: "Masks", url: "shop.html#masks" },
+
+    { name: "Snorkel", url: "shop.html#snorkels" },
+    { name: "Snorkels", url: "shop.html#snorkels" },
+
+    { name: "Fins", url: "shop.html#fins" },
+
+    { name: "Float Boat", url: "shop.html#float-boats" },
+    { name: "Hard Float", url: "shop.html#hard-floats" },
+    { name: "Float Line", url: "shop.html#float-lines" },
+
+    { name: "Dive Knife", url: "shop.html#knives" },
+
+    { name: "Package Deals", url: "shop.html#deals" }
+
+];
+
+const input = document.getElementById("searchInput");
+const results = document.getElementById("searchResults");
+
+input.addEventListener("input", function(){
+
+    let value = this.value.toLowerCase();
+
+    results.innerHTML = "";
+
+    if(value === ""){
+        results.style.display = "none";
+        return;
+    }
+
+    let matches = products.filter(product =>
+        product.name.toLowerCase().includes(value)
+    );
+
+    matches.forEach(product =>{
+
+        const link = document.createElement("a");
+
+        link.href = product.url;
+        link.textContent = product.name;
+
+        results.appendChild(link);
+
+    });
+
+    results.style.display = matches.length ? "block" : "none";
+
+});
+
+document.addEventListener("click", function(e){
+
+    if(!document.querySelector(".search").contains(e.target)){
+        results.style.display = "none";
+    }
+
+});
+
+const logo = document.querySelector(".logo");
+
+logo.addEventListener("click", function() {
+    window.location.href = "Index.html";
+});
+
+
+</script>

@@ -22,8 +22,6 @@
                 <div id="searchResults"></div>
             </div>
 
-            <div></div>
-
         </div>
 
         <div class="bottom-nav">
@@ -38,6 +36,122 @@
 
     </nav>
 
+    <div class="charterOptions">
+
+            <div class="Charters">
+                <h1>Reef Charter</h1>
+
+                <img src="images/ReefCharter.jpeg" alt="Reef Charter" width="50%" height="50%">
+
+                <h2>Our Reef Charter is a 4 hour trip that takes you to the best reef spots in the area. We will provide you with all the gear you need to have a successful day of spearfishing. This charter is perfect for those who are new to spearfishing or those who want to improve their skills. We will teach you how to hunt and how to clean your fish. This charter is perfect for those who want to learn the art of spearfishing.</h2>
+                
+                <button onclick="window.location.href='booking.html'" class="bookButton">Book Now</button>
+
+            </div>
+
+            <div class="Charters">
+                <h1>Deep Reef Charter</h1>
+
+                <img src="images/DeepReefCharter.jpeg" alt="Deep Reef Charter" width="50%" height="50%">
+
+                <h2>Our Deep Reef Charter is a 6 hour trip that takes you to the best spots in the area. We will provide you with all the gear you need to have a successful day of spearfishing. This charter is perfect for those who are new to spearfishing or those who want to improve their skills. We will teach you how to hunt and how to clean your fish. This charter is perfect for those who want to learn the art of spearfishing.</h2>
+
+                <button onclick="window.location.href='booking.html'" class="bookButton">Book Now</button>
+
+
+            </div>
+
+            <div class="Charters">
+                <h1>Blue Water Charter</h1>
+
+                <img src="images/BlueWaterCharter.jpeg" alt="Blue Water Charter" width="50%" height="50%">
+
+                <h2>Our Blue Water Charter is a 9 hour trip that takes you to the best blue water spots in the area. We will provide you with all the gear you need to have a successful day of spearfishing. This charter is perfect for those who are new to spearfishing or those who want to improve their skills. We will teach you how to hunt and how to clean your fish. This charter is perfect for those who want to learn the art of spearfishing.</h2>
+
+                <button onclick="window.location.href='booking.html'" class="bookButton">Book Now</button>
+
+            </div>
+
+    </div>
     
 </body>
 </html>
+
+<script>
+
+const products = [
+
+    // Products
+    { name: "Speargun", url: "shop.html#spearguns" },
+    { name: "Spearguns", url: "shop.html#spearguns" },
+
+    { name: "Wetsuit", url: "shop.html#wetsuit" },
+    { name: "Wetsuits", url: "shop.html#wetsuit" },
+
+    { name: "Mask", url: "shop.html#masks" },
+    { name: "Masks", url: "shop.html#masks" },
+
+    { name: "Snorkel", url: "shop.html#snorkels" },
+    { name: "Snorkels", url: "shop.html#snorkels" },
+
+    { name: "Fins", url: "shop.html#fins" },
+
+    { name: "Float Boat", url: "shop.html#float-boats" },
+    { name: "Hard Float", url: "shop.html#hard-floats" },
+    { name: "Float Line", url: "shop.html#float-lines" },
+
+    { name: "Dive Knife", url: "shop.html#knives" },
+
+    { name: "Package Deals", url: "shop.html#deals" }
+
+];
+
+const input = document.getElementById("searchInput");
+const results = document.getElementById("searchResults");
+
+input.addEventListener("input", function(){
+
+    let value = this.value.toLowerCase();
+
+    results.innerHTML = "";
+
+    if(value === ""){
+        results.style.display = "none";
+        return;
+    }
+
+    let matches = products.filter(product =>
+        product.name.toLowerCase().includes(value)
+    );
+
+    matches.forEach(product =>{
+
+        const link = document.createElement("a");
+
+        link.href = product.url;
+        link.textContent = product.name;
+
+        results.appendChild(link);
+
+    });
+
+    results.style.display = matches.length ? "block" : "none";
+
+});
+
+document.addEventListener("click", function(e){
+
+    if(!document.querySelector(".search").contains(e.target)){
+        results.style.display = "none";
+    }
+
+});
+
+const logo = document.querySelector(".logo");
+
+logo.addEventListener("click", function() {
+    window.location.href = "Index.html";
+});
+
+
+</script>

@@ -37,4 +37,102 @@
         </div>
 
     </nav>
+
+    <form action="https://formspree.io/f/xwlkedzz" method="POST" class="contact-form">
+
+        <label for="first">First Name:</label>
+        <input type="text" id="first" name="first" placeholder="First Name" required><br><br>
+
+        <label for="last">Last Name:</label>
+        <input type="text" id="last" name="last" placeholder="Last Name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" cols="60" placeholder="Your message here..." required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
 </body>
+</html>
+
+<script>
+
+const products = [
+
+    // Products
+    { name: "Speargun", url: "shop.html#spearguns" },
+    { name: "Spearguns", url: "shop.html#spearguns" },
+
+    { name: "Wetsuit", url: "shop.html#wetsuit" },
+    { name: "Wetsuits", url: "shop.html#wetsuit" },
+
+    { name: "Mask", url: "shop.html#masks" },
+    { name: "Masks", url: "shop.html#masks" },
+
+    { name: "Snorkel", url: "shop.html#snorkels" },
+    { name: "Snorkels", url: "shop.html#snorkels" },
+
+    { name: "Fins", url: "shop.html#fins" },
+
+    { name: "Float Boat", url: "shop.html#float-boats" },
+    { name: "Hard Float", url: "shop.html#hard-floats" },
+    { name: "Float Line", url: "shop.html#float-lines" },
+
+    { name: "Dive Knife", url: "shop.html#knives" },
+
+    { name: "Package Deals", url: "shop.html#deals" }
+
+];
+
+const input = document.getElementById("searchInput");
+const results = document.getElementById("searchResults");
+
+input.addEventListener("input", function(){
+
+    let value = this.value.toLowerCase();
+
+    results.innerHTML = "";
+
+    if(value === ""){
+        results.style.display = "none";
+        return;
+    }
+
+    let matches = products.filter(product =>
+        product.name.toLowerCase().includes(value)
+    );
+
+    matches.forEach(product =>{
+
+        const link = document.createElement("a");
+
+        link.href = product.url;
+        link.textContent = product.name;
+
+        results.appendChild(link);
+
+    });
+
+    results.style.display = matches.length ? "block" : "none";
+
+});
+
+document.addEventListener("click", function(e){
+
+    if(!document.querySelector(".search").contains(e.target)){
+        results.style.display = "none";
+    }
+
+});
+
+const logo = document.querySelector(".logo");
+
+logo.addEventListener("click", function() {
+    window.location.href = "Index.html";
+});
+
+
+</script>

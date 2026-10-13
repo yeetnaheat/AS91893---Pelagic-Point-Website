@@ -22,8 +22,6 @@
                 <div id="searchResults"></div>
             </div>
 
-            <div></div>
-
         </div>
 
         <div class="bottom-nav">
@@ -38,6 +36,94 @@
 
     </nav>
 
+    <div class="AUTitle">
+        <h1>About Us</h1>
+    </div>
+
+    <div class="AUStatement">
+        <h2>I founded Pelagic Point, an online store that sells spearguns, wetsuits, masks, snorkels, fins, float boats, float lines, dive knives and package deals, in order to achieve things that other companies have been unable to succesfully do (at least in my eyes). We are set out to teach and share our knowledge with those who want to learn the art of spearfishing. We have the best crew possible for such a task and hope to involve as many people as possible with our journey. We offer charters, products and infinite knowledge.</h2>
+        <img src="images/OwnerPortraitAU.jpeg" alt="Owner Portrait" width="50%" height="50%">
+    </div>
+
 
 </body>
 </html>
+
+<script>
+
+const products = [
+
+    // Products
+    { name: "Speargun", url: "shop.html#spearguns" },
+    { name: "Spearguns", url: "shop.html#spearguns" },
+
+    { name: "Wetsuit", url: "shop.html#wetsuit" },
+    { name: "Wetsuits", url: "shop.html#wetsuit" },
+
+    { name: "Mask", url: "shop.html#masks" },
+    { name: "Masks", url: "shop.html#masks" },
+
+    { name: "Snorkel", url: "shop.html#snorkels" },
+    { name: "Snorkels", url: "shop.html#snorkels" },
+
+    { name: "Fins", url: "shop.html#fins" },
+
+    { name: "Float Boat", url: "shop.html#float-boats" },
+    { name: "Hard Float", url: "shop.html#hard-floats" },
+    { name: "Float Line", url: "shop.html#float-lines" },
+
+    { name: "Dive Knife", url: "shop.html#knives" },
+
+    { name: "Package Deals", url: "shop.html#deals" }
+
+];
+
+const input = document.getElementById("searchInput");
+const results = document.getElementById("searchResults");
+
+input.addEventListener("input", function(){
+
+    let value = this.value.toLowerCase();
+
+    results.innerHTML = "";
+
+    if(value === ""){
+        results.style.display = "none";
+        return;
+    }
+
+    let matches = products.filter(product =>
+        product.name.toLowerCase().includes(value)
+    );
+
+    matches.forEach(product =>{
+
+        const link = document.createElement("a");
+
+        link.href = product.url;
+        link.textContent = product.name;
+
+        results.appendChild(link);
+
+    });
+
+    results.style.display = matches.length ? "block" : "none";
+
+});
+
+document.addEventListener("click", function(e){
+
+    if(!document.querySelector(".search").contains(e.target)){
+        results.style.display = "none";
+    }
+
+});
+
+const logo = document.querySelector(".logo");
+
+logo.addEventListener("click", function() {
+    window.location.href = "Index.html";
+});
+
+
+</script>

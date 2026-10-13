@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="PPHP.css">
     <title>Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -43,11 +44,45 @@
 
         <div id="snorkels"></div>
 
-        <div id="wetsuits">
-            <div id="5mm-wh-w">
-                <h2>5mm Workhorse Wetsuit</h2>
-                <p>Price: $199.99</p>
+        <div class="Wrapper"></div>
+
+            <button class="previous">
+                &#10094;
+            </button>
+
+            <div class="wetsuits-spin">
+
+                <article class="wetsuits">
+
+                    <div class="wetsuit-product">
+                        <img src="images/5mmWorkhorseWetsuit.jpg" alt="5mm Workhorse Wetsuit">
+                        <h2 class="productName">5mm Workhorse Wetsuit</h2>
+                        <h2 class="prices">$399.99</h2>
+                        <button onclick="window.location.href='shop.html#wetsuit'" class="shopButton">Buy Now</button>
+                    </div>
+
+                    <div class="wetsuit-product">
+                        <img src="images/5mmWorkhorseWetsuit.jpg" alt="5mm Workhorse Wetsuit">
+                        <h2 class="productName">5mm Workhorse Wetsuit</h2>
+                        <h2 class="prices">$399.99</h2>
+                        <button onclick="window.location.href='shop.html#wetsuit'" class="shopButton">Buy Now</button>
+                    </div>
+
+                    <div class="wetsuit-product">
+                        <img src="images/5mmWorkhorseWetsuit.jpg" alt="5mm Workhorse Wetsuit">
+                        <h2 class="productName">5mm Workhorse Wetsuit</h2>
+                        <h2 class="prices">$399.99</h2>
+                        <button onclick="window.location.href='shop.html#wetsuit'" class="shopButton">Buy Now</button>
+                    </div>
+
+                </article>
+
             </div>
+
+            <button class="next">
+                &#10095;
+            </button>
+
         </div>
 
         <div id="spearguns"></div>
@@ -55,3 +90,82 @@
 
 </body>
 </html>
+
+<script>
+
+const products = [
+
+    // Products
+    { name: "Speargun", url: "shop.html#spearguns" },
+    { name: "Spearguns", url: "shop.html#spearguns" },
+
+    { name: "Wetsuit", url: "shop.html#wetsuit" },
+    { name: "Wetsuits", url: "shop.html#wetsuit" },
+
+    { name: "Mask", url: "shop.html#masks" },
+    { name: "Masks", url: "shop.html#masks" },
+
+    { name: "Snorkel", url: "shop.html#snorkels" },
+    { name: "Snorkels", url: "shop.html#snorkels" },
+
+    { name: "Fins", url: "shop.html#fins" },
+
+    { name: "Float Boat", url: "shop.html#float-boats" },
+    { name: "Hard Float", url: "shop.html#hard-floats" },
+    { name: "Float Line", url: "shop.html#float-lines" },
+
+    { name: "Dive Knife", url: "shop.html#knives" },
+
+    { name: "Package Deals", url: "shop.html#deals" }
+
+];
+
+const input = document.getElementById("searchInput");
+const results = document.getElementById("searchResults");
+
+input.addEventListener("input", function(){
+
+    let value = this.value.toLowerCase();
+
+    results.innerHTML = "";
+
+    if(value === ""){
+        results.style.display = "none";
+        return;
+    }
+
+    let matches = products.filter(product =>
+        product.name.toLowerCase().includes(value)
+    );
+
+    matches.forEach(product =>{
+
+        const link = document.createElement("a");
+
+        link.href = product.url;
+        link.textContent = product.name;
+
+        results.appendChild(link);
+
+    });
+
+    results.style.display = matches.length ? "block" : "none";
+
+});
+
+document.addEventListener("click", function(e){
+
+    if(!document.querySelector(".search").contains(e.target)){
+        results.style.display = "none";
+    }
+
+});
+
+const logo = document.querySelector(".logo");
+
+logo.addEventListener("click", function() {
+    window.location.href = "Index.html";
+});
+
+
+</script>
